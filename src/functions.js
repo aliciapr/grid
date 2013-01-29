@@ -1,4 +1,4 @@
-function CreateMainContainer(name) {
+function createMainContainer(name) {
 
 	// $(document.body).append('<div id=' + name + '></div>');
 
@@ -8,7 +8,7 @@ function CreateMainContainer(name) {
 
 }
 
-function DrawWithRaphael(){
+function drawWithRaphael() {
 	var paper = Raphael(0, 0, 320, 320);
 	// Creates canvas 320 × 200 at 10, 50
 	var rect = paper.rect(10, 50, 40, 40).attr({
@@ -22,10 +22,4 @@ function DrawWithRaphael(){
 	});
 }
 
-(function($) {
-	$.fn.MyCss = function(options) {
 
-		this.css('border', options);
-		return this;
-	};
-})(jQuery);
