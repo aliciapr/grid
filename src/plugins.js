@@ -1,11 +1,4 @@
 (function($) {
-	$.fn.myCss = function(options) {
-		this.css('border', options);
-		return this;
-	};
-})(jQuery);
-
-(function($) {
 	$.fn.coloredGrid = function() {
 
 		var mainHeight = this.height();
@@ -13,23 +6,27 @@
 
 		var firstDiv = jQuery('<div/>', {
 			id : 'firstDiv'
-		}).appendTo(this); // '#mainContainer'
+		}).appendTo(this);
 		firstDiv.css({
-			'width' : (mainWidth * 90) / 100.0,
-			'background-color' : 'salmon',
+			'border' : '4px solid salmon',
 			'float' : 'left',
+			'border-radius' : '22%',
+			'width' : (mainWidth * 0.9) - 8, // 4px per border, therefore 8
 			'height' : mainHeight
-		// 'margin-right' : '3px'
 		});
-		// firstDiv.myCss("2px solid salmon");// $('#firstDiv').
 
 		var secondDiv = jQuery('<div/>', {
 			id : 'secondDiv'
 		}).appendTo(this);
+		var secondWidth = mainWidth * 0.1;
+		var margin = secondWidth * 0.05;
+		var rest = secondWidth - margin;
 		secondDiv.css({
-			'width' : (mainWidth * 10) / 100.0,
 			'float' : 'left',
-			'background-color' : 'lightsalmon',
+			'margin-left' : margin,
+			'border-radius' : '22%',
+			'border' : '4px solid salmon',// lightsalmon
+			'width' : rest - 8,
 			'height' : mainHeight
 		});
 
