@@ -30,31 +30,35 @@
 						switch (cellNum % 3) {
 						case 0:
 							blue += res;
-							$("<td>").css(
-									'background-color',
-									'rgb(' + red + '%,' + green + '%,' + blue
-											+ '%)').appendTo(trow);
-							// .text('('+red+','+green+','+blue+')');
 							break;
 						case 1:
 							green += res;
-							$("<td>").css(
-									'background-color',
-									'rgb(' + red + '%,' + green + '%,' + blue
-											+ '%)').appendTo(trow);
-							//.text('('+red+','+ green+','+blue+')');
 							break;
 						case 2:
 							red += res;
-							$("<td>").css(
-									'background-color',
-									'rgb(' + red + '%,' + green + '%,' + blue
-											+ '%)').appendTo(trow);
-							//.text('('+red+','+green+','+blue+')');
 							break;
 						}
+						$("<td>").css(
+								'background-color',
+								'rgb(' + red + '%,' + green + '%,' + blue
+										+ '%)').appendTo(trow).draggable({
+							revert : "valid"
+						});
+						// revert=valid returns to previous position
+						// .text('('+red+','+green+','+blue+')');
 					} else {
-						$("<td>").appendTo(trow);
+						$("<td>").appendTo(trow).droppable(
+								{
+									drop : function(event, ui) {
+										// retrieve color
+										var color = $(ui.draggable).css(
+												'background-color');
+										var position = $(ui.draggable)
+												.position();
+										// apply color to this:
+										$(this).css('background-color', color);
+									}
+								});
 					}
 				}
 				body.append(trow);
